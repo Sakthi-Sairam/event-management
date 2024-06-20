@@ -1,0 +1,74 @@
+.calendar-container {
+  margin: 2rem;
+  width: 90vw; /* Ensure it is responsive */
+  max-width: 40rem; /* Limit the maximum width */
+}
+
+.rbc-calendar {
+  background-color: white;
+  /* background-color: var(--bg-color); */
+  border: 2px solid var(--primary-color); /* Primary color outline */
+  border-radius: 1rem; /* Curved borders similar to event cards */
+  padding: 1rem; /* Adequate padding */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for a card-like effect */
+}
+
+.rbc-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* Space between toolbar and calendar */
+}
+
+.rbc-toolbar button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.rbc-toolbar button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.rbc-month-view {
+  border-top: 1px solid var(--primary-color); /* Top border in primary color */
+}
+
+.rbc-month-row {
+  border-bottom: 1px solid var(--primary-color); /* Bottom border in primary color */
+}
+
+.rbc-date-cell {
+  text-align: center;
+  padding: 0.5rem;
+  border-right: 1px solid var(--secondary-color); /* Right border in primary color */
+}
+
+.rbc-date-cell:last-child {
+  border-right: none; /* Remove right border for the last cell */
+}
+
+.rbc-event {
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+.rbc-event-content{
+  color: white;
+}
+
+.rbc-event:hover {
+  background-color: var(--secondary-color);
+}
+
+.rbc-today {
+  background-color: rgba(0, 123, 255, 0.1); /* Light shade of primary color */
+}
+
+.rbc-off-range-bg {
+  background-color: #f0f0f0; /* Light grey background for out-of-range days */
+}
