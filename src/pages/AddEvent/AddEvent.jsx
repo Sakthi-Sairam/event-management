@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import './AddEvent.css';
+import { eventList } from '../../utils/EventDatabase';
 
 const AddEvent = () => {
   const [eventData, setEventData] = useState({
     heading: '',
-    date: '',
+    date: {
+      day: '',
+      month: 'January',
+      year: ''
+    },
     location: '',
     description: '',
     img: '',
+    link: ''
   });
 
   const handleChange = (e) => {
@@ -18,10 +24,48 @@ const AddEvent = () => {
     });
   };
 
+  const handleDateChange = (e) => {
+    const { name, value } = e.target;
+    setEventData({
+      ...eventData,
+      date: {
+        ...eventData.date,
+        [name]: value
+      },
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(eventData);
-    // You can add functionality to save the eventData to a database or state here
+
+    // Generate a unique ID using the current timestamp
+    const uniqueId = Date.now();
+
+    // Create the new event object with the unique ID
+    const newEvent = {
+      id: uniqueId,
+      ...eventData
+    };
+
+    // Add the new event to the eventList
+    eventList.push(newEvent);
+
+    console.log('New Event Added:', newEvent);
+    console.log('Updated Event List:', eventList);
+
+    // Clear the form
+    setEventData({
+      heading: '',
+      date: {
+        day: '',
+        month: 'January',
+        year: ''
+      },
+      location: '',
+      description: '',
+      img: '',
+      link: ''
+    });
   };
 
   return (
@@ -39,16 +83,46 @@ const AddEvent = () => {
             required
           />
         </div>
+        <div className='date-group'>
         <div className="form-group">
-          <label htmlFor="date">Date</label>
+          <label htmlFor="day">Day</label>
           <input
-            type="date"
-            id="date"
-            name="date"
-            value={eventData.date}
-            onChange={handleChange}
+            type="number"
+            id="day"
+            name="day"
+            value={eventData.date.day}
+            onChange={handleDateChange}
             required
           />
+        </div>
+        <div className="form-group">
+          <label htmlFor="month">Month</label>
+          <select
+            id="month"
+            name="month"
+            value={eventData.date.month}
+            onChange={handleDateChange}
+            required
+          >
+            {[
+              'January', 'February', 'March', 'April', 'May', 'June',
+              'July', 'August', 'September', 'October', 'November', 'December'
+            ].map((month) => (
+              <option key={month} value={month}>{month}</option>
+            ))}
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="year">Year</label>
+          <input
+            type="number"
+            id="year"
+            name="year"
+            value={eventData.date.year}
+            onChange={handleDateChange}
+            required
+          />
+        </div>
         </div>
         <div className="form-group">
           <label htmlFor="location">Location</label>
@@ -78,6 +152,17 @@ const AddEvent = () => {
             id="img"
             name="img"
             value={eventData.img}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="link">Registration Form Link (Google Forms / Microsoft Forms / Other Forms)</label>
+          <input
+            type="text"
+            id="link"
+            name="link"
+            value={eventData.link}
             onChange={handleChange}
             required
           />

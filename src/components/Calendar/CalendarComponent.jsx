@@ -16,7 +16,7 @@ const CalendarComponent = ({ events }) => {
   const navigate = useNavigate();
 
   const handleSelectEvent = (event) => {
-    navigate(`/diaries/${event.id}`);
+    navigate(`/events/${event.id}`);
   };
 
   const eventList = events.map(event => ({

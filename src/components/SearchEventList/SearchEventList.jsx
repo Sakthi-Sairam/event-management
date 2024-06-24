@@ -6,7 +6,7 @@ const SearchEventList = ({monthYear}) => {
 
   const filteredEvents = eventList.filter((evnt)=>{
     return(
-      evnt.date.year === Number(selectedYear) && 
+      Number(evnt.date.year) === Number(selectedYear) && 
       evnt.date.month === selectedMonth
       )})
     console.log(filteredEvents)

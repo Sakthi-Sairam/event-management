@@ -32,7 +32,7 @@ const FilterBox = ({getMonthYear}) => {
             "July",
             "August",
             "September",
-            "october",
+            "October",
             "November",
             "December"
         ]
