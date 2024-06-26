@@ -1,22 +1,51 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { eventList } from '../../utils/EventDatabase';
-import "./EventDetails.css"
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import "./EventDetails.css";
 import { MdCalendarMonth } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
+import { db } from '../../firebase'; // Import Firestore instance
+import { collection, getDocs } from 'firebase/firestore';
 
 const EventDetails = () => {
-  const {id} = useParams();
-  const numId=Number(id);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const numId = Number(id);
 
-  const filteredEvent = eventList.find((EventDetail)=> EventDetail.id===numId)
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const eventsCollection = collection(db, 'events');
+        const eventsSnapshot = await getDocs(eventsCollection);
+        const eventsList = eventsSnapshot.docs.map(doc => ({...doc.data() }));
+        console.log(eventsList);
+        setEvents(eventsList);
+      } catch (error) {
+        console.error("Error fetching events: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  return(
+    fetchEvents();
+  }, []);
+
+  const filteredEvent = events.find((event) => event.id === numId);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!filteredEvent) {
+    return <div>Event not found</div>;
+  }
+
+  return (
     <div className="event-details-container">
       <div className="event-details-wrapper">
         <img src={filteredEvent.img} alt="Event" />
         <div className="event-details-content">
-          <h3>Event Name : {filteredEvent.heading}</h3>
+          <h3>Event Name: {filteredEvent.heading}</h3>
           <div className="small-details">
             <p className="date">
               <MdCalendarMonth className="icon" />
@@ -36,10 +65,11 @@ const EventDetails = () => {
               {filteredEvent.description}
             </span>
           </p>
-          <a href={filteredEvent.link} className='button-88'>Resgister</a>
+          <a href={filteredEvent.link} className='button-88'>Register</a>
         </div>
       </div>
     </div>
-  )
-}
-export default EventDetails
+  );
+};
+
+export default EventDetails;

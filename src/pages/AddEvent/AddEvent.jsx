@@ -1,6 +1,8 @@
+// src/components/AddEvent.js
 import React, { useState } from 'react';
 import './AddEvent.css';
-import { eventList } from '../../utils/EventDatabase';
+import { collection, addDoc } from "firebase/firestore";
+import { db } from '../../firebase';
 
 const AddEvent = () => {
   const [eventData, setEventData] = useState({
@@ -35,7 +37,7 @@ const AddEvent = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Generate a unique ID using the current timestamp
@@ -47,25 +49,25 @@ const AddEvent = () => {
       ...eventData
     };
 
-    // Add the new event to the eventList
-    eventList.push(newEvent);
-
-    console.log('New Event Added:', newEvent);
-    console.log('Updated Event List:', eventList);
-
-    // Clear the form
-    setEventData({
-      heading: '',
-      date: {
-        day: '',
-        month: 'January',
-        year: ''
-      },
-      location: '',
-      description: '',
-      img: '',
-      link: ''
-    });
+    try {
+      await addDoc(collection(db, "events"), newEvent);
+      console.log('New Event Added:', newEvent);
+      // Clear the form
+      setEventData({
+        heading: '',
+        date: {
+          day: '',
+          month: 'January',
+          year: ''
+        },
+        location: '',
+        description: '',
+        img: '',
+        link: ''
+      });
+    } catch (error) {
+      console.error("Error adding event: ", error);
+    }
   };
 
   return (
@@ -84,45 +86,45 @@ const AddEvent = () => {
           />
         </div>
         <div className='date-group'>
-        <div className="form-group">
-          <label htmlFor="day">Day</label>
-          <input
-            type="number"
-            id="day"
-            name="day"
-            value={eventData.date.day}
-            onChange={handleDateChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="month">Month</label>
-          <select
-            id="month"
-            name="month"
-            value={eventData.date.month}
-            onChange={handleDateChange}
-            required
-          >
-            {[
-              'January', 'February', 'March', 'April', 'May', 'June',
-              'July', 'August', 'September', 'October', 'November', 'December'
-            ].map((month) => (
-              <option key={month} value={month}>{month}</option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="year">Year</label>
-          <input
-            type="number"
-            id="year"
-            name="year"
-            value={eventData.date.year}
-            onChange={handleDateChange}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="day">Day</label>
+            <input
+              type="number"
+              id="day"
+              name="day"
+              value={eventData.date.day}
+              onChange={handleDateChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="month">Month</label>
+            <select
+              id="month"
+              name="month"
+              value={eventData.date.month}
+              onChange={handleDateChange}
+              required
+            >
+              {[
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+              ].map((month) => (
+                <option key={month} value={month}>{month}</option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="year">Year</label>
+            <input
+              type="number"
+              id="year"
+              name="year"
+              value={eventData.date.year}
+              onChange={handleDateChange}
+              required
+            />
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="location">Location</label>

@@ -1,15 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import EventCard from '../EventCard/EventCard'
-import { eventList } from '../../utils/EventDatabase'
+import { db } from '../../firebase'; // Import Firestore instance
+import { collection, getDocs } from 'firebase/firestore';
 const SearchEventList = ({monthYear}) => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const eventsCollection = collection(db, 'events');
+        const eventsSnapshot = await getDocs(eventsCollection);
+        const eventsList = eventsSnapshot.docs.map(doc => ({...doc.data() }));
+        console.log(eventsList);
+        setEvents(eventsList);
+      } catch (error) {
+        console.error("Error fetching events: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
   const {selectedMonth, selectedYear} = monthYear;
 
-  const filteredEvents = eventList.filter((evnt)=>{
+  const filteredEvents = events.filter((evnt)=>{
     return(
       Number(evnt.date.year) === Number(selectedYear) && 
       evnt.date.month === selectedMonth
       )})
     console.log(filteredEvents)
+    if (loading) {
+      return <div>Loading...</div>;
+    }
 
     const renderEventCards = () => {
       return filteredEvents.map(({ id, heading, description, date, location, img }) => (
