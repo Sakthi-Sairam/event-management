@@ -2,6 +2,7 @@
 
 ## Overview
 The Event Management Application is a comprehensive platform designed to facilitate the creation, organization, and display of various events. This application allows users to easily add new events, categorize them, and display them in a user-friendly manner. It leverages the power of React for a dynamic front-end experience and Firebase for robust backend support, including real-time database and authentication.
+#### link: https://event-management-page.web.app/
 
 ## Key Features
 - Create Events: Add new events with details like title, date, location, description, image, and type (Hackathon, Workshop, etc.).
