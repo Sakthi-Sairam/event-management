@@ -1,0 +1,87 @@
+.admin-page-container {
+    margin-top: 8rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .admin-page-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .admin-add-button {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-add-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .event-type-heading {
+    text-align: center;
+    color: #555;
+    margin: 2rem 0 1rem 0;
+  }
+  
+  .admin-event-list {
+    list-style: none;
+    padding: 0;
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .admin-event-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-event-details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .admin-event-details p {
+    margin: 0.25rem 0;
+    color: #555;
+  }
+  
+  .admin-event-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .admin-delete-button {
+    padding: 0.5rem 1rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-delete-button:hover {
+    background-color: #c0392b;
+  }
+  

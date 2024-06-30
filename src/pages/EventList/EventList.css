@@ -1,0 +1,36 @@
+.event-list-wrapper {
+     width: 100%;
+     height: auto;
+     background-color: white;
+     padding: 2%;
+   }
+   
+   .event-list {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-top: 60px;
+     margin-bottom: 60px;
+     flex-wrap: wrap;
+     flex-direction: row;
+   }
+   
+   .event-h1 {
+     font-size: 3rem;
+     font-weight: 800;
+     text-align: center;
+     margin-top: 5rem;
+     background-clip: text;
+     background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+     color: white;
+     font-weight: 800;
+     letter-spacing: 5px;
+     padding: 1rem;
+     -webkit-text-stroke-color: transparent;
+     -webkit-text-stroke-width: 4px;
+   }
+   
+   .m-3 {
+     margin-top: 6rem;
+   }
+   

@@ -1,0 +1,61 @@
+.add-event-container {
+  max-width: 600px;
+  margin: 7rem auto 3rem auto;
+  padding: 50px 22px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 9px 9px 16px #d1d9e6, -9px -9px 16px #ffffff;
+}
+
+.add-event-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.add-event-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.date-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-group .form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.date-group .form-group:last-child {
+  margin-right: 0;
+}
