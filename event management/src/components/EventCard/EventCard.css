@@ -1,0 +1,108 @@
+.card {
+  width: 90vw;
+  max-width: 356px;
+  height: auto; 
+  /* background-color: white; */
+  background-color: #ffe7e35b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 18px;
+  border: 2px solid var(--primary-color);
+  flex-direction: column;
+}
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.187);
+}
+.card img {
+  width: 100%; 
+  border-radius: 14px;
+}
+.card .card-content {
+  width: 100%; 
+  max-width: 230px; 
+  height: auto; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card .card-content h3 {
+  font-size: 20px; 
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin-bottom: 20px; 
+  text-align: center;
+}
+.card .card-content p {
+  font-size: 16px; 
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 12px; 
+}
+.card .card-content p span {
+  font-size: 14px; 
+}
+@media (min-width: 640px) {
+  .card {
+    width: 80vw; 
+  }
+  .card .card-content h3 {
+    font-size: 22px; 
+  }
+  .card .card-content p {
+    font-size: 17px; 
+  }
+  .card .card-content p span {
+    font-size: 15px; 
+  }
+}
+@media (min-width: 1024px) {
+  .card {
+    width: 41vw; 
+  }
+  .card .card-content h3 {
+    font-size: 24px; 
+  }
+  .card .card-content p {
+    font-size: 18px; 
+  }
+  .card .card-content p span {
+    font-size: 16px; 
+  }
+}
+.swiper-slide {
+  display: flex!important;
+  justify-content: center;
+}
+.button-88 {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: linear-gradient(0deg, var(--primary-color) 0%, var(--primary-color) 100%);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: 0 0.7em 1.5em -0.5em var(--primary-color);
+  transition: .25s ease-in-out;
+}
+.button-88:hover {
+  box-shadow: none;
+  transform: scale(0.9);
+}
+.button-88.expired{
+  background:grey;
+  box-shadow: 0 0.7em 1.5em -0.5em grey;
+}

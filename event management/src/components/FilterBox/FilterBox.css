@@ -1,0 +1,75 @@
+
+.filter-card {
+  width: 90vw; /* Changed from fixed width to a percentage of the viewport width */
+  max-width: 30rem; /* Use rem for maximum width */
+  height: auto; /* Changed from fixed height to auto to adapt to content */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem; /* Use rem for border radius */
+  padding: 1.5rem; /* Reduced padding for better responsiveness */
+  margin-bottom: 2.5rem; /* Use rem for margin-bottom */
+  border: 1px solid var(--primary-color);
+}
+
+.wrapper {
+  width: 90vw; /* Changed from fixed width to a percentage of the viewport width */
+  max-width: 30rem; /* Use rem for maximum width */
+  height: auto; /* Changed from fixed height to auto */
+  padding: 1.5rem; /* Adjusted padding for better responsiveness */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Added flex-wrap to handle wrapping on smaller screens */
+}
+
+.filter-card form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Added width to take full space */
+  flex-wrap: wrap; /* Added flex-wrap to handle wrapping on smaller screens */
+}
+
+.month {
+  margin-bottom: 1rem; /* Added margin to separate elements when wrapped */
+}
+
+.month label,
+.month select {
+  font-size: 1rem; /* Use rem for font-size */
+}
+
+.filter-card button {
+  padding: 0.75rem 1.75rem; /* Use rem for padding */
+  border-style: none;
+  border-radius: 0.5rem; /* Use rem for border-radius */
+  background-color: var(--primary-color);
+  cursor: pointer;
+  margin-top: 1rem; /* Added margin for spacing on smaller screens */
+}
+
+.filter-card button:hover {
+  background-color: rgb(9, 140, 16);
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+
+  .filter-card form {
+    flex-direction: column; /* Stack form elements vertically */
+    align-items: flex-start; /* Align form elements to the start */
+  }
+
+  .month {
+    width: 100%; /* Take full width */
+    margin-bottom: 0.5rem; /* Reduced margin for better spacing */
+  }
+
+  .filter-card button {
+    width: 100%; /* Take full width */
+    margin-top: 0.5rem; /* Reduced margin for better spacing */
+  }
+}
